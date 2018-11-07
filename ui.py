@@ -1,6 +1,6 @@
 __author__ = 'maciek'
 import pyqtgraph as pg
-from PyQt4 import QtCore, QtGui, Qt
+from PyQt5 import QtCore, QtGui, Qt
 import numpy as np
 
 try:

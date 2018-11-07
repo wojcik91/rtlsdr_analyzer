@@ -1,6 +1,6 @@
 __author__ = 'maciek'
 
-from PyQt4 import QtCore
+from PyQt5 import QtCore
 from rtlsdr import RtlSdr
 import time
 import numpy as np

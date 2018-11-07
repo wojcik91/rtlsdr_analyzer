@@ -3,11 +3,11 @@ __author__ = 'maciek'
 import numpy as np
 import pyqtgraph as pg
 from ui import Interface
-from PyQt4 import QtGui, QtCore
-from PyQt4.QtCore import pyqtSlot
+from PyQt5 import QtGui, QtCore
+from PyQt5.QtCore import pyqtSlot
 from sampler import Sampler
 from worker import Worker
-from controller import USBController
+# from controller import USBController
 
 app = QtGui.QApplication([])
 

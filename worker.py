@@ -1,7 +1,7 @@
 __author__ = 'maciek'
 
-from PyQt4 import QtCore
-from pylab import mlab
+from PyQt5 import QtCore
+#from pylab import mlab
 from matplotlib.mlab import psd, stride_windows, apply_window
 import numpy as np
 import time
