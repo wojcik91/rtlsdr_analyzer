@@ -7,7 +7,6 @@ from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import pyqtSlot
 from sampler import Sampler
 from worker import Worker
-# from controller import USBController
 
 app = QtGui.QApplication([])
 
