@@ -30,12 +30,12 @@ class Sampler(QtCore.QObject):
             self.sdr.sample_rate = self.sampRate
         except IOError:
             self.WORKING = False
-            print "Failed to initiate device. Please reconnect."
+            print("Failed to initiate device. Please reconnect.")
             self.errorMsg = "Failed to initiate device. Please reconnect."
             self.samplerError.emit(self.errorMsg)
 
     def sampling(self):
-        print 'Starting sampler...'
+        print('[INFO] Starting sampler...')
         while self.WORKING:
             prev = 0
             counter = 0
@@ -44,19 +44,19 @@ class Sampler(QtCore.QObject):
             self.BREAK = False
             self.sdr.gain = gain
             start = time.time()
-            #print self.sdr.get_gain()
+            
             for i in range(len(self.freqs)):
                 if self.BREAK:
                     break
                 else:
                     centerFreq = self.freqs[i]
-                    #print "frequency: " + str(center_freq/1e6) + "MHz"
+                    
                     if centerFreq != prev:
                         try:
                             self.sdr.set_center_freq(centerFreq)
                         except:
                             self.WORKING = False
-                            print "Device failure while setting center frequency"
+                            print("Device failure while setting center frequency")
                             self.errorMsg = "Device failure while setting center frequency"
                             self.samplerError.emit(self.errorMsg)
                             break
@@ -71,7 +71,7 @@ class Sampler(QtCore.QObject):
 
                     except:
                         self.WORKING = False
-                        print "Device failure while getting samples"
+                        print("Device failure while getting samples")
                         self.errorMsg = "Device failure while getting samples"
                         self.samplerError.emit(self.errorMsg)
                         break

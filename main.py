@@ -288,7 +288,7 @@ class Analyzer(QtGui.QMainWindow):
 
             if self.WATERFALL:
                 self.waterfallUpdate(self.xData, yData)
-        #print len(yData)
+        
         self.curve.setData(self.xData, yData)
 
     def waterfallUpdate(self, xData, yData):
@@ -421,8 +421,8 @@ class Analyzer(QtGui.QMainWindow):
         self.xData = []
         self.yData = []
         self.waterfallImg = None
-        print self.numSamples
-        print self.nfft
+        print(self.numSamples)
+        print(self.nfft)
 
     @pyqtSlot(float)
     def onCenter(self, center):

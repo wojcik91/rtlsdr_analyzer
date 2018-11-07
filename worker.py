@@ -36,7 +36,7 @@ class Worker(QtCore.QObject):
             samples = samples[:nfft*(1+self.nwelch)/2]
 
         trash = length - sliceLength
-        #print len(samples)
+        
         samples = samples - offset
         samples = samples - np.mean(samples)
         #power, freqs = psd(samples, NFFT=nfft, pad_to=length, noverlap=nfft/2, Fs=sampRate/1e6, detrend=mlab.detrend_mean, window=mlab.window_hanning, sides = 'twosided')

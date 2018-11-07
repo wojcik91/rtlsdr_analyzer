@@ -14,9 +14,9 @@ class USBController():
             self.attenuation = 0
             self.switch_1 = 1
             self.switch_2 = 1
-            print self.state
+            print(self.state)
         except:
-            print "Failed to initialize USB controller. Please reconnect."
+            print("Failed to initialize USB controller. Please reconnect.")
             errorMsg = "Failed to initialize USB controller. Please reconnect."
             #self.usbError.emit(errorMsg)
 
@@ -28,7 +28,7 @@ class USBController():
             self.bb.port = value
             self.state = self.bb.read_pins()
         else:
-            print "Attenuation value out of range"
+            print("Attenuation value out of range")
 
 
     def set_switches(self, a, b):
@@ -40,4 +40,4 @@ class USBController():
             self.bb.port = value
             self.state = self.bb.read_pins()
         else:
-            print "Incorrent switch setting. Enter 0 or 1."
+            print("Incorrent switch setting. Enter 0 or 1.")
