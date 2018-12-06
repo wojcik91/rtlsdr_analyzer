@@ -72,14 +72,17 @@ class Interface(object):
         self.startLayout.setObjectName(_fromUtf8("startLayout"))
         self.startLabel = QtGui.QLabel(self.freqBox)
         self.startLabel.setObjectName(_fromUtf8("startLabel"))
-        self.startLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.startLabel)
+        self.startLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                   self.startLabel)
 
-        self.startEdit = pg.SpinBox(self.freqBox, suffix=' MHz', siPrefix=False)
+        self.startEdit = pg.SpinBox(self.freqBox, suffix=' MHz',
+                                    siPrefix=False)
         self.startEdit.setObjectName(_fromUtf8("startEdit"))
         self.startEdit.setDecimals(2)
         self.startEdit.setSingleStep(0.1)
         self.startEdit.setKeyboardTracking(False)
-        self.startLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.startEdit)
+        self.startLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                   self.startEdit)
         self.freqHLayout_1.addLayout(self.startLayout)
 
         # Stop frequency setting
@@ -87,14 +90,17 @@ class Interface(object):
         self.stopLayout.setObjectName(_fromUtf8("stopLayout"))
         self.stopLabel = QtGui.QLabel(self.freqBox)
         self.stopLabel.setObjectName(_fromUtf8("stopLabel"))
-        self.stopLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.stopLabel)
+        self.stopLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                  self.stopLabel)
 
-        self.stopEdit = pg.SpinBox(self.freqBox, suffix=' MHz', siPrefix=False, decimals=2)
+        self.stopEdit = pg.SpinBox(self.freqBox, suffix=' MHz',
+                                   siPrefix=False, decimals=2)
         self.stopEdit.setObjectName(_fromUtf8("stopEdit"))
         #self.stopEdit.setDecimals(2)
         self.stopEdit.setSingleStep(0.1)
         self.stopEdit.setKeyboardTracking(False)
-        self.stopLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.stopEdit)
+        self.stopLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                  self.stopEdit)
         self.freqHLayout_1.addLayout(self.stopLayout)
 
         # RBW setting
@@ -122,7 +128,8 @@ class Interface(object):
         self.rbwLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.rbwEdit)
         self.freqHLayout_1.addLayout(self.rbwLayout)
 
-        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding,
+                                       QtGui.QSizePolicy.Minimum)
         self.freqHLayout_1.addItem(spacerItem)
 
         self.freqHLayout_2 = QtGui.QHBoxLayout()
@@ -134,14 +141,17 @@ class Interface(object):
         self.centerLayout.setObjectName(_fromUtf8("centerLayout"))
         self.centerLabel = QtGui.QLabel(self.freqBox)
         self.centerLabel.setObjectName(_fromUtf8("centerLabel"))
-        self.centerLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.centerLabel)
+        self.centerLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                    self.centerLabel)
 
-        self.centerEdit = pg.SpinBox(self.freqBox, suffix=' MHz', siPrefix=False)
+        self.centerEdit = pg.SpinBox(self.freqBox, suffix=' MHz',
+                                     siPrefix=False)
         self.centerEdit.setObjectName(_fromUtf8("centerEdit"))
         self.centerEdit.setDecimals(2)
         self.centerEdit.setSingleStep(1)
         self.centerEdit.setKeyboardTracking(False)
-        self.centerLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.centerEdit)
+        self.centerLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                    self.centerEdit)
         self.freqHLayout_2.addLayout(self.centerLayout)
 
         # Span setting
@@ -149,7 +159,8 @@ class Interface(object):
         self.spanLayout.setObjectName(_fromUtf8("spanLayout"))
         self.spanLabel = QtGui.QLabel(self.freqBox)
         self.spanLabel.setObjectName(_fromUtf8("spanLabel"))
-        self.spanLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.spanLabel)
+        self.spanLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                  self.spanLabel)
 
         self.spanEdit = pg.SpinBox(self.freqBox, suffix=' MHz', siPrefix=False)
         self.spanEdit.setObjectName(_fromUtf8("spanEdit"))
@@ -157,7 +168,8 @@ class Interface(object):
         self.spanEdit.setRange(self.step/1e6, 1250)
         self.spanEdit.setSingleStep(0.1)
         self.spanEdit.setKeyboardTracking(False)
-        self.spanLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.spanEdit)
+        self.spanLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                  self.spanEdit)
         self.freqHLayout_2.addLayout(self.spanLayout)
         self.freqHLayout_2.addItem(spacerItem)
 
@@ -188,16 +200,20 @@ class Interface(object):
         self.gainLayout = QtGui.QFormLayout()
         self.gainLayout.setObjectName(_fromUtf8("gainLayout"))
         self.gainLabel = QtGui.QLabel(self.settingsBox)
-        self.gainLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.gainLabel.setAlignment(QtCore.Qt.AlignRight |
+                                    QtCore.Qt.AlignTrailing |
+                                    QtCore.Qt.AlignVCenter)
         self.gainLabel.setObjectName(_fromUtf8("gainLabel"))
-        self.gainLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.gainLabel)
+        self.gainLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                  self.gainLabel)
         self.gainSlider = QtGui.QSlider(self.settingsBox)
         self.gainSlider.setMaximum(49)
         self.gainSlider.setSingleStep(1)
         self.gainSlider.setProperty("value", 20)
         self.gainSlider.setOrientation(QtCore.Qt.Horizontal)
         self.gainSlider.setObjectName(_fromUtf8("gainSlider"))
-        self.gainLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.gainSlider)
+        self.gainLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                  self.gainSlider)
         self.settingsVLayout_1.addLayout(self.gainLayout)
 
         # Gain display
@@ -209,7 +225,9 @@ class Interface(object):
         self.refLayout = QtGui.QFormLayout()
         self.refLayout.setObjectName(_fromUtf8("refLayout"))
         self.refLabel = QtGui.QLabel(self.settingsBox)
-        self.refLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.refLabel.setAlignment(QtCore.Qt.AlignRight |
+                                   QtCore.Qt.AlignTrailing |
+                                   QtCore.Qt.AlignVCenter)
         self.refLabel.setObjectName(_fromUtf8("refLabel"))
         self.refLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.refLabel)
         self.refEdit = QtGui.QDoubleSpinBox(self.settingsBox)
@@ -221,7 +239,8 @@ class Interface(object):
         self.refLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.refEdit)
         self.settingsVLayout_1.addLayout(self.refLayout)
 
-        spacerItem1 = QtGui.QSpacerItem(158, 304, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        spacerItem1 = QtGui.QSpacerItem(158, 304, QtGui.QSizePolicy.Minimum,
+                                        QtGui.QSizePolicy.Expanding)
         self.settingsVLayout_1.addItem(spacerItem1)
 
     ### Settings tabs ###
@@ -241,54 +260,74 @@ class Interface(object):
         self.avgLayout_1 = QtGui.QFormLayout()
         self.avgLayout_1.setObjectName(_fromUtf8("avgLayout_1"))
         self.avgLabel_1 = QtGui.QLabel(self.settingsBox)
-        self.avgLabel_1.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.avgLabel_1.setAlignment(QtCore.Qt.AlignRight |
+                                     QtCore.Qt.AlignTrailing |
+                                     QtCore.Qt.AlignVCenter)
         self.avgLabel_1.setObjectName(_fromUtf8("avgLabel"))
-        self.avgLayout_1.setWidget(0, QtGui.QFormLayout.LabelRole, self.avgLabel_1)
+        self.avgLayout_1.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                   self.avgLabel_1)
         self.avgCheck = QtGui.QCheckBox(self.settingsBox)
-        self.avgLayout_1.setWidget(0, QtGui.QFormLayout.FieldRole, self.avgCheck)
+        self.avgLayout_1.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                   self.avgCheck)
         self.miscLayout.addLayout(self.avgLayout_1)
 
         self.avgLayout_2 = QtGui.QFormLayout()
         self.avgLabel_2 = QtGui.QLabel(self.settingsBox)
-        self.avgLabel_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.avgLabel_2.setAlignment(QtCore.Qt.AlignRight |
+                                     QtCore.Qt.AlignTrailing |
+                                     QtCore.Qt.AlignVCenter)
         self.avgLabel_2.setObjectName(_fromUtf8("avgLabel_2"))
-        self.avgLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole, self.avgLabel_2)
+        self.avgLayout_2.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                   self.avgLabel_2)
         self.avgEdit = QtGui.QDoubleSpinBox(self.settingsBox)
         self.avgEdit.setDecimals(0)
         self.avgEdit.setRange(1, 100)
         self.avgEdit.setKeyboardTracking(False)
         self.avgEdit.setValue(10)
-        self.avgLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole, self.avgEdit)
+        self.avgLayout_2.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                   self.avgEdit)
         self.miscLayout.addLayout(self.avgLayout_2)
 
         self.holdLayout = QtGui.QFormLayout()
         self.holdLayout.setObjectName(_fromUtf8("holdLayout"))
         self.holdLabel = QtGui.QLabel(self.settingsBox)
-        self.holdLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.holdLabel.setAlignment(QtCore.Qt.AlignRight |
+                                    QtCore.Qt.AlignTrailing |
+                                    QtCore.Qt.AlignVCenter)
         self.holdLabel.setObjectName(_fromUtf8("holdLabel"))
-        self.holdLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.holdLabel)
+        self.holdLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                  self.holdLabel)
         self.holdCheck = QtGui.QCheckBox(self.settingsBox)
-        self.holdLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.holdCheck)
+        self.holdLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                  self.holdCheck)
         self.miscLayout.addLayout(self.holdLayout)
 
         self.peakLayout = QtGui.QFormLayout()
         self.peakLayout.setObjectName(_fromUtf8("peakLayout"))
         self.peakLabel = QtGui.QLabel(self.settingsBox)
-        self.peakLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.peakLabel.setAlignment(QtCore.Qt.AlignRight |
+                                    QtCore.Qt.AlignTrailing |
+                                    QtCore.Qt.AlignVCenter)
         self.peakLabel.setObjectName(_fromUtf8("peakLabel"))
-        self.peakLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.peakLabel)
+        self.peakLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
+                                  self.peakLabel)
         self.peakCheck = QtGui.QCheckBox(self.settingsBox)
-        self.peakLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.peakCheck)
+        self.peakLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                  self.peakCheck)
         self.miscLayout.addLayout(self.peakLayout)
 
         self.waterfallLayout = QtGui.QFormLayout()
         self.waterfallLayout.setObjectName(_fromUtf8("waterfallLayout"))
         self.waterfallLabel = QtGui.QLabel(self.settingsBox)
-        self.waterfallLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.waterfallLabel.setAlignment(QtCore.Qt.AlignRight |
+                                         QtCore.Qt.AlignTrailing |
+                                         QtCore.Qt.AlignVCenter)
         self.waterfallLabel.setObjectName(_fromUtf8("waterfallLabel"))
-        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.waterfallLabel)
+        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.LabelRole, 
+                                       self.waterfallLabel)
         self.waterfallCheck = QtGui.QCheckBox(self.settingsBox)
-        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.waterfallCheck)
+        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
+                                       self.waterfallCheck)
         self.miscLayout.addLayout(self.waterfallLayout)
 
         self.correctButton = QtGui.QPushButton(self.settingsBox)
@@ -314,7 +353,8 @@ class Interface(object):
         self.traceButton_3.setText("Save trace 3")
         self.traceLayout.addWidget(self.traceButton_3)
 
-        self.traces = [self.traceButton_1, self.traceButton_2, self.traceButton_3]
+        self.traces = [self.traceButton_1, self.traceButton_2,
+                       self.traceButton_3]
 
         self.tab_2.setLayout(self.traceLayout)
 
@@ -324,7 +364,9 @@ class Interface(object):
 
         self.markerLayout = QtGui.QGridLayout()
         self.markerLabel_1 = QtGui.QLabel(self.settingsBox)
-        self.markerLabel_1.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.markerLabel_1.setAlignment(QtCore.Qt.AlignRight |
+                                        QtCore.Qt.AlignTrailing |
+                                        QtCore.Qt.AlignVCenter)
         self.markerLayout.addWidget(self.markerLabel_1, 0,0)
         self.markerCheck_1 = QtGui.QCheckBox(self.settingsBox)
         self.markerLayout.addWidget(self.markerCheck_1, 0,1)
@@ -336,7 +378,9 @@ class Interface(object):
         self.markerLayout.addWidget(self.markerEdit_1, 0,2)
 
         self.markerLabel_2 = QtGui.QLabel(self.settingsBox)
-        self.markerLabel_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.markerLabel_2.setAlignment(QtCore.Qt.AlignRight |
+                                        QtCore.Qt.AlignTrailing |
+                                        QtCore.Qt.AlignVCenter)
         self.markerLayout.addWidget(self.markerLabel_2, 2,0)
         self.markerCheck_2 = QtGui.QCheckBox(self.settingsBox)
         self.markerLayout.addWidget(self.markerCheck_2, 2,1)
@@ -348,7 +392,9 @@ class Interface(object):
         self.markerLayout.addWidget(self.markerEdit_2, 2,2)
 
         self.markerLabel_3 = QtGui.QLabel(self.settingsBox)
-        self.markerLabel_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.markerLabel_3.setAlignment(QtCore.Qt.AlignRight |
+                                        QtCore.Qt.AlignTrailing |
+                                        QtCore.Qt.AlignVCenter)
         self.markerLayout.addWidget(self.markerLabel_3, 3,0)
         self.markerCheck_3 = QtGui.QCheckBox(self.settingsBox)
         self.markerLayout.addWidget(self.markerCheck_3, 3,1)
@@ -360,7 +406,9 @@ class Interface(object):
         self.markerLayout.addWidget(self.markerEdit_3, 3,2)
 
         self.markerLabel_4 = QtGui.QLabel(self.settingsBox)
-        self.markerLabel_4.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.markerLabel_4.setAlignment(QtCore.Qt.AlignRight |
+                                        QtCore.Qt.AlignTrailing |
+                                        QtCore.Qt.AlignVCenter)
         self.markerLayout.addWidget(self.markerLabel_4, 4,0)
         self.markerCheck_4 = QtGui.QCheckBox(self.settingsBox)
         self.markerLayout.addWidget(self.markerCheck_4, 4,1)
@@ -372,7 +420,9 @@ class Interface(object):
         self.markerLayout.addWidget(self.markerEdit_4, 4,2)
 
         self.deltaLabel = QtGui.QLabel(self.settingsBox)
-        self.deltaLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.deltaLabel.setAlignment(QtCore.Qt.AlignRight |
+                                     QtCore.Qt.AlignTrailing |
+                                     QtCore.Qt.AlignVCenter)
         self.markerLayout.addWidget(self.deltaLabel, 1,0)
         self.deltaCheck = QtGui.QCheckBox(self.settingsBox)
         self.markerLayout.addWidget(self.deltaCheck, 1,1)
@@ -405,7 +455,8 @@ class Interface(object):
 
 
     def retlanslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "Spectrum Analyzer", None))
+        MainWindow.setWindowTitle(_translate("MainWindow",
+                                             "Spectrum Analyzer", None))
         self.freqBox.setTitle(_translate("MainWindow", "Frequency", None))
         #self.plotBox.setTitle(_translate("MainWindow", "Spectrum", None))
         self.startLabel.setText(_translate("MainWindow", "START:", None))
@@ -420,7 +471,8 @@ class Interface(object):
         self.avgLabel_1.setText(_translate("MainWindow", "Average:", None))
         self.avgLabel_2.setText(_translate("MainWindow", "Avg traces:", None))
         self.peakLabel.setText(_translate("MainWindow", "Peak search:", None))
-        self.waterfallLabel.setText(_translate("MainWindow", "Waterfall:", None))
+        self.waterfallLabel.setText(_translate("MainWindow",
+                                               "Waterfall:", None))
         self.markerLabel_1.setText(_translate("MainWindow", "Marker 1:", None))
         self.markerLabel_2.setText(_translate("MainWindow", "Marker 2:", None))
         self.markerLabel_3.setText(_translate("MainWindow", "Marker 3:", None))

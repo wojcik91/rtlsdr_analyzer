@@ -56,8 +56,10 @@ class Sampler(QtCore.QObject):
                             self.sdr.set_center_freq(centerFreq)
                         except:
                             self.WORKING = False
-                            print("Device failure while setting center frequency")
-                            self.errorMsg = "Device failure while setting center frequency"
+                            print("Device failure while setting\
+                                  center frequency")
+                            self.errorMsg = "Device failure while setting\
+                                             center frequency"
                             self.samplerError.emit(self.errorMsg)
                             break
                         prev = centerFreq

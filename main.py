@@ -158,7 +158,8 @@ class Analyzer(QtGui.QMainWindow):
                 self.waterfallImg = None
 
     def updateFreqs(self):
-        self.freqs = np.arange(self.startFreq+self.step/2, self.stopFreq+self.step/2, self.step)
+        self.freqs = np.arange(self.startFreq+self.step/2,
+                               self.stopFreq+self.step/2, self.step)
         self.markerIndex = [None, None, None, None]
         self.deltaIndex = None
         self.peakIndex = None
@@ -204,10 +205,12 @@ class Analyzer(QtGui.QMainWindow):
             
         if self.nfft < threshold:
             self.length = 1024
-            self.sliceLength = int(np.floor(self.length*(self.step/self.sampRate)))        
+            self.sliceLength = int(np.floor(self.length *
+                                            (self.step/self.sampRate)))        
         else:
             self.length = self.nfft
-            self.sliceLength = int(np.floor(self.length*(self.step/self.sampRate)))
+            self.sliceLength = int(np.floor(self.length *
+                                            (self.step/self.sampRate)))
 
     @QtCore.pyqtSlot(object)
     def plotUpdate(self, data):
@@ -218,8 +221,16 @@ class Analyzer(QtGui.QMainWindow):
                 self.xData = xTemp
                 self.yData = yTemp
         else:
-            self.xData = np.concatenate((self.xData[:index*self.sliceLength], xTemp, self.xData[(index+1)*self.sliceLength:]))
-            self.yData = np.concatenate((self.yData[:index*self.sliceLength], yTemp, self.yData[(index+1)*self.sliceLength:]))
+            self.xData = np.concatenate((
+                                        self.xData[:index*self.sliceLength],
+                                        xTemp,
+                                        self.xData[(index+1)*self.sliceLength:]
+                                        ))
+            self.yData = np.concatenate((
+                                        self.yData[:index*self.sliceLength],
+                                        yTemp,
+                                        self.yData[(index+1)*self.sliceLength:]
+                                        ))
 
         yData = self.yData
 
@@ -230,7 +241,8 @@ class Analyzer(QtGui.QMainWindow):
                         self.avgArray = np.array([self.yData])
 
                     elif self.avgArray.shape[0] < self.numAvg:
-                        self.avgArray = np.append(self.avgArray, np.array([self.yData]), axis=0)
+                        self.avgArray = np.append(self.avgArray, 
+                                                  np.array([self.yData]),
 
                     else:
                         self.avgArray = np.roll(self.avgArray, -1, axis=0)
@@ -248,16 +260,20 @@ class Analyzer(QtGui.QMainWindow):
                         index = np.argmin(np.abs(self.xData-self.markerValue[i]))
                         self.markerIndex[i] = index
                     self.markers[i].setIndex(self.markerIndex[i])
-                    self.markerText[i].setText("Mk1:\nf=%0.1f MHz\nP=%0.1f dBm" % (self.xData[self.markerIndex[i]], yData[self.markerIndex[i]]))
+                    self.markerText[i].setText("Mk1:\nf=%0.1f MHz\nP=%0.1f dBm" %
+                                               (self.xData[self.markerIndex[i]],
+                                                yData[self.markerIndex[i]]))
 
             if self.DELTA:
                 if self.deltaIndex == None:
                     index = np.argmin(np.abs(self.xData-self.deltaValue))
                     self.deltaIndex = index
                 self.delta.setIndex(self.deltaIndex)
-                dx = self.xData[self.deltaIndex] - self.xData[self.markerIndex[0]]
+                dx = self.xData[self.deltaIndex] -\
+                    self.xData[self.markerIndex[0]]
                 dy = yData[self.deltaIndex] - yData[self.markerIndex[0]]
-                self.deltaText.setText("Delta:\ndf=%0.1f MHz\ndP=%0.1f dB" % (dx, dy))
+                self.deltaText.setText("Delta:\ndf=%0.1f MHz\ndP=%0.1f dB" %
+                                       (dx, dy))
 
             if self.HOLD:
                 if self.holdData is None:
@@ -269,7 +285,9 @@ class Analyzer(QtGui.QMainWindow):
             if self.PEAK:
                 self.peakIndex = np.argmax(yData)
                 self.peak.setIndex(self.peakIndex)
-                self.peakText.setText("Peak:\nf=%0.1f MHz\nP=%0.1f dBm" % (self.xData[self.peakIndex], yData[self.peakIndex]))
+                self.peakText.setText("Peak:\nf=%0.1f MHz\nP=%0.1f dBm" %
+                                      (self.xData[self.peakIndex],
+                                       yData[self.peakIndex]))
 
             for i in range(len(self.SAVE)):
                 if self.SAVE[i]:
@@ -291,7 +309,8 @@ class Analyzer(QtGui.QMainWindow):
 
     def waterfallUpdate(self, xData, yData):
         if self.waterfallImg is None:
-            self.waterfallImgArray = np.zeros((self.waterfallHistorySize, len(xData)))
+            self.waterfallImgArray = np.zeros((self.waterfallHistorySize,
+                                               len(xData)))
             self.waterfallImg = pg.ImageItem()
             self.waterfallImg.scale((xData[-1] - xData[0]) / len(xData), 1)
             self.waterfallImg.setPos(xData[0],-self.waterfallHistorySize)
@@ -307,7 +326,8 @@ class Analyzer(QtGui.QMainWindow):
 ### SETUP SAMPLER AND WORKER
     def setupSampler(self):
         self.samplerThread = QtCore.QThread(self)
-        self.sampler = Sampler(self.gain, self.sampRate, self.freqs, self.numSamples)
+        self.sampler = Sampler(self.gain, self.sampRate, 
+                               self.freqs, self.numSamples)
         self.sampler.moveToThread(self.samplerThread)
         self.samplerThread.started.connect(self.sampler.sampling)
         self.sampler.samplerError.connect(self.onError)
@@ -316,7 +336,8 @@ class Analyzer(QtGui.QMainWindow):
 
     def setupWorker(self):
         self.workerThread = QtCore.QThread(self)
-        self.worker = Worker(self.nfft, self.length, self.sliceLength, self.sampRate, self.nwelch)
+        self.worker = Worker(self.nfft, self.length, self.sliceLength,
+                             self.sampRate, self.nwelch)
         self.worker.moveToThread(self.workerThread)
         self.worker.dataReady.connect(self.plotUpdate)
         self.workerThread.start(QtCore.QThread.NormalPriority)
@@ -327,7 +348,8 @@ class Analyzer(QtGui.QMainWindow):
         pos = evt[0]
         if self.plot.sceneBoundingRect().contains(pos):
             mousePoint = self.plot.getViewBox().mapSceneToView(pos)
-            self.posLabel.setText("f=%0.1f MHz, P=%0.1f dBm" % (mousePoint.x(),mousePoint.y()))
+            self.posLabel.setText("f=%0.1f MHz, P=%0.1f dBm" %
+                                 (mousePoint.x(),mousePoint.y()))
             self.vLine.setPos(mousePoint.x())
             self.hLine.setPos(mousePoint.y())
             self.posLabel.setPos(mousePoint.x(), mousePoint.y())

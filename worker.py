@@ -9,7 +9,8 @@ class Worker(QtCore.QObject):
     abort = QtCore.pyqtSignal()
     dataReady = QtCore.pyqtSignal(object)
 
-    def __init__(self, nfft, length, sliceLength, sampRate, nwelch, parent=None):
+    def __init__(self, nfft, length, sliceLength,
+                 sampRate, nwelch, parent=None):
         super(Worker, self).__init__(parent)
         self.sampRate = sampRate
         self.nwelch = nwelch
@@ -38,7 +39,10 @@ class Worker(QtCore.QObject):
 
         samples = samples - offset
         samples = samples - np.mean(samples)
-        #power, freqs = psd(samples, NFFT=nfft, pad_to=length, noverlap=nfft/2, Fs=sampRate/1e6, detrend=mlab.detrend_mean, window=mlab.window_hanning, sides = 'twosided')
+        # power, freqs = psd(samples, NFFT=nfft, pad_to=length,
+        #                    noverlap=nfft/2, Fs=sampRate/1e6,
+        #                    detrend=mlab.detrend_mean,
+        #                    window=mlab.window_hanning, sides = 'twosided')
         power, freqs = self.welch(samples, nfft, length, sampRate/1e6)
         power = np.reshape(power, len(power))
 
@@ -65,7 +69,8 @@ class Worker(QtCore.QObject):
         temp = stride_windows(x, nfft, nfft/2, axis=0)
 
         # Apply window function
-        temp, windowVal = apply_window(temp, window, axis=0, return_window=True)
+        temp, windowVal = apply_window(temp, window, axis=0,
+                                       return_window=True)
 
         # Calculate window normalization
         S_1 = (np.abs(windowVal)).sum()
@@ -79,7 +84,8 @@ class Worker(QtCore.QObject):
         power /= S_1**2
 
         freqs = np.concatenate((freqs[freqcenter:], freqs[:freqcenter]))
-        power = np.concatenate((power[freqcenter:, :], power[:freqcenter, :]), 0)
+        power = np.concatenate((power[freqcenter:, :],
+                                power[:freqcenter, :]), 0)
 
         # Average the power spectra
         power = np.mean(power, axis=1)
