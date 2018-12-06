@@ -76,7 +76,6 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.traceButton_3.clicked.connect(self.onSave_3)
         self.ui.waterfallCheck.stateChanged.connect(self.onWaterfall)
 
-        #self.usb = USBController()
 
 ### PLOT FUNCTIONS ###
     def createPlot(self):
