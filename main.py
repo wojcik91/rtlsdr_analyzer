@@ -46,7 +46,7 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.setupUi(self, self.step, self.ref)
 
         self.nwelch = 15
-        self.nfft = self.ui.rbwEdit.itemData(self.ui.rbwEdit.currentIndex()).toInt()[0]
+        self.nfft = self.ui.rbwEdit.itemData(self.ui.rbwEdit.currentIndex())
         self.numSamples = self.nfft*(1+self.nwelch)/2
         self.length = self.nfft
         self.sliceLength = int(np.floor(self.length*(self.step/self.sampRate)))
