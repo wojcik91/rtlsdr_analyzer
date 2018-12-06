@@ -5,6 +5,7 @@ from rtlsdr import RtlSdr
 import time
 import numpy as np
 
+
 class Sampler(QtCore.QObject):
     samplerError = QtCore.pyqtSignal(object)
     dataAcquired = QtCore.pyqtSignal(object)
@@ -44,27 +45,29 @@ class Sampler(QtCore.QObject):
             self.BREAK = False
             self.sdr.gain = gain
             start = time.time()
-            
+
             for i in range(len(self.freqs)):
                 if self.BREAK:
                     break
                 else:
                     centerFreq = self.freqs[i]
-                    
+
                     if centerFreq != prev:
                         try:
                             self.sdr.set_center_freq(centerFreq)
                         except:
                             self.WORKING = False
-                            print("Device failure while setting center frequency")
-                            self.errorMsg = "Device failure while setting center frequency"
+                            print("Device failure while setting\
+                                  center frequency")
+                            self.errorMsg = "Device failure while setting\
+                                             center frequency"
                             self.samplerError.emit(self.errorMsg)
                             break
                         prev = centerFreq
                     else:
                         pass
 
-                    #time.sleep(0.01)
+                    # time.sleep(0.01)
                     try:
                         x = self.sdr.read_samples(2048)
                         data = self.sdr.read_samples(numSamples)
@@ -86,4 +89,3 @@ class Sampler(QtCore.QObject):
             self.samplerError.emit(self.errorMsg)
         if self.sdr is not None:
             self.sdr.close()
-
