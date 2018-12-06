@@ -387,7 +387,7 @@ class Analyzer(QtGui.QMainWindow):
         elif index == 3:
             self.ui.settingsTabs.setEnabled(False)
 
-    @pyqtSlot(float)
+    # @pyqtSlot(int)
     def onStartFreq(self, value):
         self.startFreq = value*1e6
         if self.startFreq > self.stopFreq - self.step:
@@ -396,7 +396,7 @@ class Analyzer(QtGui.QMainWindow):
         self.center = self.startFreq + self.span/2
         self.updateFreqs()
 
-    @pyqtSlot(float)
+    # @pyqtSlot(int)
     def onStopFreq(self, value):
         self.stopFreq = value*1e6
         if self.stopFreq < self.startFreq + self.step:
@@ -423,21 +423,21 @@ class Analyzer(QtGui.QMainWindow):
         print(self.numSamples)
         print(self.nfft)
 
-    @pyqtSlot(float)
+    # @pyqtSlot(float)
     def onCenter(self, center):
         self.center = center*1e6
         self.startFreq = self.center - self.span/2
         self.stopFreq = self.center + self.span/2
         self.updateFreqs()
 
-    @pyqtSlot(float)
+    # @pyqtSlot(float)
     def onSpan(self,span):
         self.span = span*1e6
         self.startFreq = self.center - self.span/2
         self.stopFreq = self.center + self.span/2
         self.updateFreqs()
 
-    @pyqtSlot(int)
+    # @pyqtSlot(int)
     def onRef(self, ref):
         self.ref = ref
         self.plot.setYRange(self.ref-100, self.ref)
