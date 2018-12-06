@@ -81,7 +81,7 @@ class Analyzer(QtGui.QMainWindow):
 ### PLOT FUNCTIONS ###
     def createPlot(self):
         self.plot = pg.PlotWidget()
-        if self.HF == False:
+        if self.HF is False:
             self.ui.startEdit.setRange(30, 1280-self.step/1e6)
             self.ui.stopEdit.setRange(30+self.step/1e6, 1280)
             self.ui.centerEdit.setRange(30+self.step/2e6, 1280-self.step/2e6)
@@ -119,7 +119,7 @@ class Analyzer(QtGui.QMainWindow):
     def deletePlot(self):
         self.curve.deleteLater()
         self.curve = None
-        if self.HF == False:
+        if self.HF is False:
             self.ui.plotLayout.removeWidget(self.plot)
         else:
             self.ui.plotLayout_2.removeWidget(self.plot)
@@ -129,7 +129,7 @@ class Analyzer(QtGui.QMainWindow):
     def createWaterfall(self):
         self.WATERFALL = True
         self.waterfallPlot = pg.PlotWidget()
-        if self.HF == False:
+        if self.HF is False:
             self.ui.plotLayout.addWidget(self.waterfallPlot)
         else:
             self.ui.plotLayout_2.addWidget(self.waterfallPlot)
@@ -146,7 +146,7 @@ class Analyzer(QtGui.QMainWindow):
     def deleteWaterfall(self):
         if self.WATERFALL:
             self.WATERFALL = False
-            if self.HF == False:
+            if self.HF is False:
                 self.ui.plotLayout.removeWidget(self.waterfallPlot)
             else:
                 self.ui.plotLayout_2.removeWidget(self.waterfallPlot)
@@ -256,7 +256,7 @@ class Analyzer(QtGui.QMainWindow):
 
             for i in range(len(self.MARKERS)):
                 if self.MARKERS[i]:
-                    if self.markerIndex[i] == None:
+                    if self.markerIndex[i] is None:
                         index = np.argmin(np.abs(self.xData-self.markerValue[i]))
                         self.markerIndex[i] = index
                     self.markers[i].setIndex(self.markerIndex[i])
@@ -265,7 +265,7 @@ class Analyzer(QtGui.QMainWindow):
                                                 yData[self.markerIndex[i]]))
 
             if self.DELTA:
-                if self.deltaIndex == None:
+                if self.deltaIndex is None:
                     index = np.argmin(np.abs(self.xData-self.deltaValue))
                     self.deltaIndex = index
                 self.delta.setIndex(self.deltaIndex)
