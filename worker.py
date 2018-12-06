@@ -4,6 +4,7 @@ from PyQt5 import QtCore
 from matplotlib.mlab import psd, stride_windows, apply_window, window_hanning
 import numpy as np
 
+
 class Worker(QtCore.QObject):
     abort = QtCore.pyqtSignal()
     dataReady = QtCore.pyqtSignal(object)
@@ -34,7 +35,7 @@ class Worker(QtCore.QObject):
             samples = samples[:nfft*(1+self.nwelch)/2]
 
         trash = length - sliceLength
-        
+
         samples = samples - offset
         samples = samples - np.mean(samples)
         #power, freqs = psd(samples, NFFT=nfft, pad_to=length, noverlap=nfft/2, Fs=sampRate/1e6, detrend=mlab.detrend_mean, window=mlab.window_hanning, sides = 'twosided')
@@ -85,4 +86,3 @@ class Worker(QtCore.QObject):
         power = power.real
 
         return power, freqs
-
