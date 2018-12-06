@@ -3,7 +3,6 @@ __author__ = 'maciek'
 from PyQt5 import QtCore
 from matplotlib.mlab import psd, stride_windows, apply_window, window_hanning
 import numpy as np
-import time
 
 class Worker(QtCore.QObject):
     abort = QtCore.pyqtSignal()
