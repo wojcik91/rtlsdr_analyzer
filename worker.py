@@ -1,8 +1,7 @@
 __author__ = 'maciek'
 
 from PyQt5 import QtCore
-#from pylab import mlab
-from matplotlib.mlab import psd, stride_windows, apply_window
+from matplotlib.mlab import psd, stride_windows, apply_window, window_hanning
 import numpy as np
 import time
 
@@ -53,7 +52,7 @@ class Worker(QtCore.QObject):
         self.dataReady.emit(out)
 
     def welch(self, x, nfft, pad_to, sampRate):
-        window = mlab.window_hanning
+        window = window_hanning
         x = np.asarray(x)
 
         numFreqs = pad_to
