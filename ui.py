@@ -28,15 +28,15 @@ class Interface(object):
         self.centralWidget = QtGui.QWidget(MainWindow)
         self.centralWidget.setObjectName(_fromUtf8("centralWidget"))
 
-### MAIN LAYOUT ###
+# MAIN LAYOUT #
         self.horizontalLayout_1 = QtGui.QHBoxLayout(self.centralWidget)
         self.horizontalLayout_1.setObjectName(_fromUtf8("horizontalLayout_1"))
 
-### LEFT SIDE LAYOUT ###
+# LEFT SIDE LAYOUT #
         self.verticalLayout_1 = QtGui.QVBoxLayout()
         self.verticalLayout_1.setObjectName(_fromUtf8("verticalLayout_1"))
 
-    ### PLOT LAYOUT ###
+    # PLOT LAYOUT #
         self.plotTabs = QtGui.QTabWidget(self.centralWidget)
         self.verticalLayout_1.addWidget(self.plotTabs)
 
@@ -60,7 +60,7 @@ class Interface(object):
         # self.plotLayout_4 = QtGui.QVBoxLayout(self.plotTab_4)
         # self.plotTabs.addTab(self.plotTab_4, "IQ")
 
-    ### FREQ SETTINGS LAYOUT ###
+    # FREQ SETTINGS LAYOUT #
         self.freqBox = QtGui.QGroupBox(self.centralWidget)
         self.freqBox.setObjectName(_fromUtf8("freqBox"))
         self.freqVLayout_1 = QtGui.QVBoxLayout(self.freqBox)
@@ -178,7 +178,7 @@ class Interface(object):
         self.verticalLayout_1.addWidget(self.freqBox)
         self.horizontalLayout_1.addLayout(self.verticalLayout_1)
 
-### RIGHT SIDE LAYOUT ###
+# RIGHT SIDE LAYOUT #
         self.settingsBox = QtGui.QGroupBox(self.centralWidget)
         self.settingsBox.setMaximumSize(QtCore.QSize(250, 16777215))
         self.settingsBox.setObjectName(_fromUtf8("settingsBox"))
@@ -245,7 +245,7 @@ class Interface(object):
                                         QtGui.QSizePolicy.Expanding)
         self.settingsVLayout_1.addItem(spacerItem1)
 
-    ### Settings tabs ###
+    # Settings tabs
         self.settingsTabs = QtGui.QTabWidget(self.settingsBox)
         self.settingsVLayout_1.addWidget(self.settingsTabs)
         self.settingsTabs.setEnabled(False)
@@ -440,7 +440,7 @@ class Interface(object):
 
         self.horizontalLayout_1.addWidget(self.settingsBox)
 
-### MISC Qt FUNCTIONS ###
+# MISC Qt FUNCTIONS #
         MainWindow.setCentralWidget(self.centralWidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 847, 21))

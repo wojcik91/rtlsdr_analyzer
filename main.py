@@ -15,7 +15,7 @@ class Analyzer(QtGui.QMainWindow):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
 
-        ### MODE FLAGS ###
+        # MODE FLAGS #
         self.RUNNING = False
         self.HF = False
         self.WATERFALL = False
@@ -26,7 +26,7 @@ class Analyzer(QtGui.QMainWindow):
         self.PEAK = False
         self.SAVE = [False, False, False]
 
-        ### VARIABLES ###
+        # VARIABLES #
         self.step = 1.8e6
         self.ref = 0
 
@@ -54,7 +54,7 @@ class Analyzer(QtGui.QMainWindow):
 
         self.createPlot()
 
-        ### SIGNALS AND SLOTS ###
+        # SIGNALS AND SLOTS #
         self.ui.startButton.clicked.connect(self.onStart)
         self.ui.stopButton.clicked.connect(self.onStop)
         self.ui.plotTabs.currentChanged.connect(self.onMode)
@@ -77,8 +77,8 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.traceButton_3.clicked.connect(self.onSave_3)
         self.ui.waterfallCheck.stateChanged.connect(self.onWaterfall)
 
+# PLOT FUNCTIONS #
 
-### PLOT FUNCTIONS ###
     def createPlot(self):
         self.plot = pg.PlotWidget()
         if self.HF is False:
@@ -324,7 +324,7 @@ class Analyzer(QtGui.QMainWindow):
         self.waterfallImg.setImage(self.waterfallImgArray.T,
                                    autoLevels=True, autoRange=False)
 
-### SETUP SAMPLER AND WORKER
+# SETUP SAMPLER AND WORKER #
     def setupSampler(self):
         self.samplerThread = QtCore.QThread(self)
         self.sampler = Sampler(self.gain, self.sampRate,
@@ -343,7 +343,7 @@ class Analyzer(QtGui.QMainWindow):
         self.worker.dataReady.connect(self.plotUpdate)
         self.workerThread.start(QtCore.QThread.NormalPriority)
 
-### GUI FUNCTIONS ###
+# GUI FUNCTIONS #
     def mouseMoved(self, evt):
         pos = evt[0]
         if self.plot.sceneBoundingRect().contains(pos):
