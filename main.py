@@ -10,6 +10,7 @@ from worker import Worker
 
 app = QtGui.QApplication([])
 
+
 class Analyzer(QtGui.QMainWindow):
     def __init__(self, parent=None):
         QtGui.QWidget.__init__(self, parent)
@@ -108,7 +109,7 @@ class Analyzer(QtGui.QMainWindow):
         self.hLine = pg.InfiniteLine(angle=0, movable=False)
         self.plot.addItem(self.vLine, ignoreBounds=True)
         self.plot.addItem(self.hLine, ignoreBounds=True)
-        self.posLabel = pg.TextItem(anchor=(0,1))
+        self.posLabel = pg.TextItem(anchor=(0, 1))
         self.plot.addItem(self.posLabel)
         self.mouseProxy = pg.SignalProxy(self.plot.scene().sigMouseMoved,
                                          rateLimit=20, slot=self.mouseMoved)
@@ -182,8 +183,6 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.centerEdit.setValue(self.center/1e6)
         self.ui.spanEdit.setValue(self.span/1e6)
 
-
-        
     def updateRbw(self):
         self.markerIndex = [None, None, None, None]
         self.deltaIndex = None
@@ -195,18 +194,18 @@ class Analyzer(QtGui.QMainWindow):
         self.numSamples = self.nfft*(1+self.nwelch)/2
         if self.numSamples < 200:
             self.numSamples = 256
-            
-        if self.span >=50e6:
+
+        if self.span >= 50e6:
             threshold = 200
-        elif self.span >= 20e6: 
+        elif self.span >= 20e6:
             threshold = 500
         else:
             threshold = 1000
-            
+
         if self.nfft < threshold:
             self.length = 1024
             self.sliceLength = int(np.floor(self.length *
-                                            (self.step/self.sampRate)))        
+                                            (self.step/self.sampRate)))
         else:
             self.length = self.nfft
             self.sliceLength = int(np.floor(self.length *
@@ -241,14 +240,15 @@ class Analyzer(QtGui.QMainWindow):
                         self.avgArray = np.array([self.yData])
 
                     elif self.avgArray.shape[0] < self.numAvg:
-                        self.avgArray = np.append(self.avgArray, 
+                        self.avgArray = np.append(self.avgArray,
                                                   np.array([self.yData]),
+                                                  axis=0)
 
                     else:
                         self.avgArray = np.roll(self.avgArray, -1, axis=0)
                         self.avgArray[-1] = self.yData
                     self.avgData = np.average(self.avgArray, axis=0)
-                    #self.curve.setData(self.xData, yData)
+                    # self.curve.setData(self.xData, yData)
                     self.avgCounter = len(self.freqs)
                 else:
                     self.avgCounter -= 1
@@ -304,7 +304,7 @@ class Analyzer(QtGui.QMainWindow):
 
             if self.WATERFALL:
                 self.waterfallUpdate(self.xData, yData)
-        
+
         self.curve.setData(self.xData, yData)
 
     def waterfallUpdate(self, xData, yData):
@@ -313,7 +313,7 @@ class Analyzer(QtGui.QMainWindow):
                                                len(xData)))
             self.waterfallImg = pg.ImageItem()
             self.waterfallImg.scale((xData[-1] - xData[0]) / len(xData), 1)
-            self.waterfallImg.setPos(xData[0],-self.waterfallHistorySize)
+            self.waterfallImg.setPos(xData[0], -self.waterfallHistorySize)
             self.waterfallPlot.clear()
             self.waterfallPlot.addItem(self.waterfallImg)
             self.waterfallHistogram.setImageItem(self.waterfallImg)
@@ -323,10 +323,11 @@ class Analyzer(QtGui.QMainWindow):
         self.waterfallImgArray[-1] = yData
         self.waterfallImg.setImage(self.waterfallImgArray.T,
                                    autoLevels=True, autoRange=False)
+
 ### SETUP SAMPLER AND WORKER
     def setupSampler(self):
         self.samplerThread = QtCore.QThread(self)
-        self.sampler = Sampler(self.gain, self.sampRate, 
+        self.sampler = Sampler(self.gain, self.sampRate,
                                self.freqs, self.numSamples)
         self.sampler.moveToThread(self.samplerThread)
         self.samplerThread.started.connect(self.sampler.sampling)
@@ -342,14 +343,13 @@ class Analyzer(QtGui.QMainWindow):
         self.worker.dataReady.connect(self.plotUpdate)
         self.workerThread.start(QtCore.QThread.NormalPriority)
 
-
 ### GUI FUNCTIONS ###
     def mouseMoved(self, evt):
         pos = evt[0]
         if self.plot.sceneBoundingRect().contains(pos):
             mousePoint = self.plot.getViewBox().mapSceneToView(pos)
             self.posLabel.setText("f=%0.1f MHz, P=%0.1f dBm" %
-                                 (mousePoint.x(),mousePoint.y()))
+                                  (mousePoint.x(), mousePoint.y()))
             self.vLine.setPos(mousePoint.x())
             self.hLine.setPos(mousePoint.y())
             self.posLabel.setPos(mousePoint.x(), mousePoint.y())
@@ -452,7 +452,7 @@ class Analyzer(QtGui.QMainWindow):
         self.updateFreqs()
 
     # @pyqtSlot(float)
-    def onSpan(self,span):
+    def onSpan(self, span):
         self.span = span*1e6
         self.startFreq = self.center - self.span/2
         self.stopFreq = self.center + self.span/2
@@ -596,17 +596,18 @@ class Analyzer(QtGui.QMainWindow):
 
     @pyqtSlot(object)
     def onError(self, errorMsg):
-        #self.ui.statusbar.addWidget(QtGui.QLabel(errorMsg))
+        # self.ui.statusbar.addWidget(QtGui.QLabel(errorMsg))
         self.ui.statusbar.showMessage("ERROR: " + errorMsg)
         self.ui.statusbar.setVisible(True)
         self.ui.stopButton.click()
 
     @pyqtSlot(int)
     def onWaterfall(self, state):
-        if state ==2:
+        if state == 2:
             self.createWaterfall()
         elif state == 0:
             self.deleteWaterfall()
+
 
 # Start Qt event loop unless running in interactive mode or using pyside.
 if __name__ == '__main__':

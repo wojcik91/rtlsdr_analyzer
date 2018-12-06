@@ -32,7 +32,7 @@ class Worker(QtCore.QObject):
         center_freq = data[1]
         samples = data[2]
 
-        if len(samples)>nfft*(1+self.nwelch)/2:
+        if len(samples) > nfft*(1+self.nwelch)/2:
             samples = samples[:nfft*(1+self.nwelch)/2]
 
         trash = length - sliceLength
@@ -51,7 +51,7 @@ class Worker(QtCore.QObject):
         freqs = freqs[trash//2:-trash//2]
 
         power = 10*np.log10(power)
-        #power = power - self.correction
+        # power = power - self.correction
         out = [index, power, freqs]
         self.dataReady.emit(out)
 

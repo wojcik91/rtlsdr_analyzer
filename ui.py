@@ -11,11 +11,13 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Interface(object):
     def setupUi(self, MainWindow, step, ref):
@@ -96,7 +98,7 @@ class Interface(object):
         self.stopEdit = pg.SpinBox(self.freqBox, suffix=' MHz',
                                    siPrefix=False, decimals=2)
         self.stopEdit.setObjectName(_fromUtf8("stopEdit"))
-        #self.stopEdit.setDecimals(2)
+        # self.stopEdit.setDecimals(2)
         self.stopEdit.setSingleStep(0.1)
         self.stopEdit.setKeyboardTracking(False)
         self.stopLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
@@ -323,7 +325,7 @@ class Interface(object):
                                          QtCore.Qt.AlignTrailing |
                                          QtCore.Qt.AlignVCenter)
         self.waterfallLabel.setObjectName(_fromUtf8("waterfallLabel"))
-        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.LabelRole, 
+        self.waterfallLayout.setWidget(0, QtGui.QFormLayout.LabelRole,
                                        self.waterfallLabel)
         self.waterfallCheck = QtGui.QCheckBox(self.settingsBox)
         self.waterfallLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
@@ -367,71 +369,71 @@ class Interface(object):
         self.markerLabel_1.setAlignment(QtCore.Qt.AlignRight |
                                         QtCore.Qt.AlignTrailing |
                                         QtCore.Qt.AlignVCenter)
-        self.markerLayout.addWidget(self.markerLabel_1, 0,0)
+        self.markerLayout.addWidget(self.markerLabel_1, 0, 0)
         self.markerCheck_1 = QtGui.QCheckBox(self.settingsBox)
-        self.markerLayout.addWidget(self.markerCheck_1, 0,1)
+        self.markerLayout.addWidget(self.markerCheck_1, 0, 1)
         self.markerEdit_1 = QtGui.QDoubleSpinBox(self.settingsBox)
         self.markerEdit_1.setDecimals(2)
         self.markerEdit_1.setKeyboardTracking(False)
         self.markerEdit_1.setDisabled(True)
         self.markerEdit_1.setSingleStep(0.1)
-        self.markerLayout.addWidget(self.markerEdit_1, 0,2)
+        self.markerLayout.addWidget(self.markerEdit_1, 0, 2)
 
         self.markerLabel_2 = QtGui.QLabel(self.settingsBox)
         self.markerLabel_2.setAlignment(QtCore.Qt.AlignRight |
                                         QtCore.Qt.AlignTrailing |
                                         QtCore.Qt.AlignVCenter)
-        self.markerLayout.addWidget(self.markerLabel_2, 2,0)
+        self.markerLayout.addWidget(self.markerLabel_2, 2, 0)
         self.markerCheck_2 = QtGui.QCheckBox(self.settingsBox)
-        self.markerLayout.addWidget(self.markerCheck_2, 2,1)
+        self.markerLayout.addWidget(self.markerCheck_2, 2, 1)
         self.markerEdit_2 = QtGui.QDoubleSpinBox(self.settingsBox)
         self.markerEdit_2.setDecimals(2)
         self.markerEdit_2.setKeyboardTracking(False)
         self.markerEdit_2.setDisabled(True)
         self.markerEdit_2.setSingleStep(0.1)
-        self.markerLayout.addWidget(self.markerEdit_2, 2,2)
+        self.markerLayout.addWidget(self.markerEdit_2, 2, 2)
 
         self.markerLabel_3 = QtGui.QLabel(self.settingsBox)
         self.markerLabel_3.setAlignment(QtCore.Qt.AlignRight |
                                         QtCore.Qt.AlignTrailing |
                                         QtCore.Qt.AlignVCenter)
-        self.markerLayout.addWidget(self.markerLabel_3, 3,0)
+        self.markerLayout.addWidget(self.markerLabel_3, 3, 0)
         self.markerCheck_3 = QtGui.QCheckBox(self.settingsBox)
-        self.markerLayout.addWidget(self.markerCheck_3, 3,1)
+        self.markerLayout.addWidget(self.markerCheck_3, 3, 1)
         self.markerEdit_3 = QtGui.QDoubleSpinBox(self.settingsBox)
         self.markerEdit_3.setDecimals(2)
         self.markerEdit_3.setKeyboardTracking(False)
         self.markerEdit_3.setDisabled(True)
         self.markerEdit_3.setSingleStep(0.1)
-        self.markerLayout.addWidget(self.markerEdit_3, 3,2)
+        self.markerLayout.addWidget(self.markerEdit_3, 3, 2)
 
         self.markerLabel_4 = QtGui.QLabel(self.settingsBox)
         self.markerLabel_4.setAlignment(QtCore.Qt.AlignRight |
                                         QtCore.Qt.AlignTrailing |
                                         QtCore.Qt.AlignVCenter)
-        self.markerLayout.addWidget(self.markerLabel_4, 4,0)
+        self.markerLayout.addWidget(self.markerLabel_4, 4, 0)
         self.markerCheck_4 = QtGui.QCheckBox(self.settingsBox)
-        self.markerLayout.addWidget(self.markerCheck_4, 4,1)
+        self.markerLayout.addWidget(self.markerCheck_4, 4, 1)
         self.markerEdit_4 = QtGui.QDoubleSpinBox(self.settingsBox)
         self.markerEdit_4.setDecimals(2)
         self.markerEdit_4.setKeyboardTracking(False)
         self.markerEdit_4.setDisabled(True)
         self.markerEdit_4.setSingleStep(0.1)
-        self.markerLayout.addWidget(self.markerEdit_4, 4,2)
+        self.markerLayout.addWidget(self.markerEdit_4, 4, 2)
 
         self.deltaLabel = QtGui.QLabel(self.settingsBox)
         self.deltaLabel.setAlignment(QtCore.Qt.AlignRight |
                                      QtCore.Qt.AlignTrailing |
                                      QtCore.Qt.AlignVCenter)
-        self.markerLayout.addWidget(self.deltaLabel, 1,0)
+        self.markerLayout.addWidget(self.deltaLabel, 1, 0)
         self.deltaCheck = QtGui.QCheckBox(self.settingsBox)
-        self.markerLayout.addWidget(self.deltaCheck, 1,1)
+        self.markerLayout.addWidget(self.deltaCheck, 1, 1)
         self.deltaEdit = QtGui.QDoubleSpinBox(self.settingsBox)
         self.deltaEdit.setDecimals(2)
         self.deltaEdit.setSingleStep(0.1)
         self.deltaEdit.setKeyboardTracking(False)
         self.deltaEdit.setDisabled(True)
-        self.markerLayout.addWidget(self.deltaEdit, 1,2)
+        self.markerLayout.addWidget(self.deltaEdit, 1, 2)
         self.deltaCheck.setDisabled(True)
 
         self.tab_3.setLayout(self.markerLayout)
@@ -447,18 +449,17 @@ class Interface(object):
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         MainWindow.setStatusBar(self.statusbar)
-        #self.statusbar.addWidget(self.peakStatus)
+        # self.statusbar.addWidget(self.peakStatus)
         self.statusbar.setVisible(False)
 
         self.retlanslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-
     def retlanslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow",
                                              "Spectrum Analyzer", None))
         self.freqBox.setTitle(_translate("MainWindow", "Frequency", None))
-        #self.plotBox.setTitle(_translate("MainWindow", "Spectrum", None))
+        # self.plotBox.setTitle(_translate("MainWindow", "Spectrum", None))
         self.startLabel.setText(_translate("MainWindow", "START:", None))
         self.stopLabel.setText(_translate("MainWindow", "STOP:", None))
         self.rbwLabel.setText(_translate("MainWindow", "RBW:", None))
