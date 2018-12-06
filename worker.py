@@ -43,8 +43,8 @@ class Worker(QtCore.QObject):
         power = np.reshape(power, len(power))
 
         freqs = freqs + center_freq/1e6
-        power = power[trash/2:-trash/2]
-        freqs = freqs[trash/2:-trash/2]
+        power = power[trash//2:-trash//2]
+        freqs = freqs[trash//2:-trash//2]
 
         power = 10*np.log10(power)
         #power = power - self.correction
