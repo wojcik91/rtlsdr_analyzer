@@ -358,6 +358,7 @@ class Analyzer(QtGui.QMainWindow):
     def onStart(self):
         self.ui.startButton.setEnabled(False)
         self.ui.stopButton.setEnabled(True)
+        self.ui.gainSlider.setEnabled(True)
         self.ui.statusbar.setVisible(False)
         self.ui.statusbar.clearMessage()
         self.ui.settingsTabs.setEnabled(True)
