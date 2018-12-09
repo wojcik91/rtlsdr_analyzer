@@ -373,6 +373,7 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.startButton.setEnabled(True)
         self.ui.stopButton.setEnabled(False)
         self.ui.settingsTabs.setEnabled(False)
+        self.ui.gainSlider.setEnabled(False)
 
         self.samplerThread.exit(0)
         self.sampler.WORKING = False
