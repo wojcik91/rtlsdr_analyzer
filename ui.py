@@ -217,6 +217,7 @@ class Interface(object):
         self.gainLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
                                   self.gainSlider)
         self.settingsVLayout_1.addLayout(self.gainLayout)
+        self.gainSlider.setEnabled(False)
 
         # Gain display
         self.gainDisp = QtGui.QLCDNumber(self.settingsBox)
