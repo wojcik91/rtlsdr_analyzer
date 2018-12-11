@@ -6,6 +6,8 @@ The interface is meant to resemble working with real swept spectrum analyzers as
 
 ## Getting Started
 
+The GUI is written using the Qt framework, so theoretically it should work on both Windows and Linux, but I personally only tested in on Fedora 29. Of course good signal reception requires a proper analog front-end (antenna, LNA, etc.), but it's outside the scope of this project.
+
 ### Prerequisites
 
 ### Installing
