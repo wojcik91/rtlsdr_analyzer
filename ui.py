@@ -1,7 +1,6 @@
 __author__ = 'maciek'
 import pyqtgraph as pg
-from PyQt5 import QtCore, QtGui, Qt
-import numpy as np
+from PyQt5 import QtCore, QtGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
