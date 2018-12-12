@@ -225,6 +225,7 @@ class Interface(object):
         self.gainDisp.setSegmentStyle(QtGui.QLCDNumber.Flat)
         self.gainDisp.setProperty("value", self.gain)
         self.settingsVLayout_1.addWidget(self.gainDisp)
+        self.gainSlider.sliderMoved.connect(self.gainDisp.display)
 
         # Reference level setting
         self.refLayout = QtGui.QFormLayout()
