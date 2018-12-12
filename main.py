@@ -29,8 +29,7 @@ class Analyzer(QtGui.QMainWindow):
         # VARIABLES #
         self.step = 1.8e6
         self.ref = 0
-
-        self.gain = 0
+        self.gain = 10
         self.sampRate = 2.4e6
 
         self.waterfallHistorySize = 100
