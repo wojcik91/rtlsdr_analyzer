@@ -432,7 +432,7 @@ class Analyzer(QtGui.QMainWindow):
 
     @pyqtSlot(int)
     def onRbw(self, index):
-        self.nfft = self.ui.rbwEdit.itemData(index).toInt()[0]
+        self.nfft = self.ui.rbwEdit.itemData(index)
         self.updateRbw()
         if self.RUNNING:
             self.sampler.numSamples = self.numSamples
