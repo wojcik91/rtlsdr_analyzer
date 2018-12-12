@@ -223,6 +223,7 @@ class Interface(object):
         # Gain display
         self.gainDisp = QtGui.QLCDNumber(self.settingsBox)
         self.gainDisp.setSegmentStyle(QtGui.QLCDNumber.Flat)
+        self.gainDisp.setProperty("value", self.gain)
         self.settingsVLayout_1.addWidget(self.gainDisp)
 
         # Reference level setting
