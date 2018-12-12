@@ -20,9 +20,10 @@ except AttributeError:
 
 
 class Interface(object):
-    def setupUi(self, MainWindow, step, ref):
+    def setupUi(self, MainWindow, step, ref, gain):
         self.step = step
         self.ref = ref
+        self.gain = gain
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(1000, 600)
         self.centralWidget = QtGui.QWidget(MainWindow)

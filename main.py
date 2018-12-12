@@ -43,7 +43,7 @@ class Analyzer(QtGui.QMainWindow):
         self.penColors = ['g', 'c', 'm']
 
         self.ui = Interface()
-        self.ui.setupUi(self, self.step, self.ref)
+        self.ui.setupUi(self, self.step, self.ref, self.gain)
 
         self.nwelch = 15
         self.nfft = self.ui.rbwEdit.itemData(self.ui.rbwEdit.currentIndex())
