@@ -10,6 +10,8 @@ The GUI is written using the Qt framework, so theoretically it should work on bo
 
 ### Prerequisites
 
+For the program to do anything useful you need to have a compatible USB dongle. To work with the dongle you have to install the unofficial driver. See https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr for instructions for your OS. The code was tested on Python 3.7, but should work on anything 3.4+.
+
 ### Installing
 
 ## Usage
