@@ -14,6 +14,28 @@ For the program to do anything useful you need to have a compatible USB dongle. 
 
 ### Installing
 
+The program itself is just a Python script so it requires no installation. Just clone the repo wherever you want and install the dependencies.
+
+First clone the repository and go into the project folder:
+
+```bash
+git clone https://github.com/wojcik91/rtlsdr_analyzer.git
+cd rtlsdr_analyzer/
+```
+
+Next create a virtual environment and activate it:
+
+```bash
+python3 -m venv env
+source env/bin/activate
+```
+
+Then install required Python libraries:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Usage
 
 To start the program go into the project folder and simply 
