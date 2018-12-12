@@ -53,8 +53,10 @@ class Analyzer(QtGui.QMainWindow):
         self.sliceLength = int(np.floor(self.length*(self.step/self.sampRate)))
 
         self.createPlot()
+        self.connectSignals()
 
-        # SIGNALS AND SLOTS #
+    # SETUP FUNCTIONS #
+    def connectSignals(self):
         self.ui.startButton.clicked.connect(self.onStart)
         self.ui.stopButton.clicked.connect(self.onStop)
         self.ui.plotTabs.currentChanged.connect(self.onMode)
