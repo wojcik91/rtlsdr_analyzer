@@ -77,6 +77,7 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.traceButton_2.clicked.connect(self.onSave_2)
         self.ui.traceButton_3.clicked.connect(self.onSave_3)
         self.ui.waterfallCheck.stateChanged.connect(self.onWaterfall)
+        self.ui.gainSlider.sliderMoved.connect(self.onGain)
 
 # PLOT FUNCTIONS #
 
@@ -610,6 +611,10 @@ class Analyzer(QtGui.QMainWindow):
             self.createWaterfall()
         elif state == 0:
             self.deleteWaterfall()
+
+    @pyqtSlot(int)
+    def onGain(self, gain):
+        self.sampler.gain = gain
 
 
 # Start Qt event loop unless running in interactive mode or using pyside.
