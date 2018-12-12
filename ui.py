@@ -212,7 +212,7 @@ class Interface(object):
         self.gainSlider = QtGui.QSlider(self.settingsBox)
         self.gainSlider.setMaximum(49)
         self.gainSlider.setSingleStep(1)
-        self.gainSlider.setProperty("value", 10)
+        self.gainSlider.setProperty("value", self.gain)
         self.gainSlider.setOrientation(QtCore.Qt.Horizontal)
         self.gainSlider.setObjectName(_fromUtf8("gainSlider"))
         self.gainLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
