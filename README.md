@@ -16,6 +16,15 @@ For the program to do anything useful you need to have a compatible USB dongle. 
 
 ## Usage
 
+To start the program go into the project folder and simply 
+type:
+
+```bash
+python main.py
+```
+
+To start the analyzer insert the dongle into a USB port and press the START button.
+
 ## Built With
 
 * [librtlsdr](https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr) - Unofficial driver for RTL2832U based devices
