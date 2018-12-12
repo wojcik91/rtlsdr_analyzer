@@ -33,7 +33,7 @@ class Worker(QtCore.QObject):
         samples = data[2]
 
         if len(samples) > nfft*(1+self.nwelch)/2:
-            samples = samples[:nfft*(1+self.nwelch)/2]
+            samples = samples[:nfft*(1+self.nwelch)//2]
 
         trash = length - sliceLength
 
