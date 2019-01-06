@@ -19,9 +19,10 @@ except AttributeError:
 
 
 class Interface(object):
-    def setupUi(self, MainWindow, step, ref):
+    def setupUi(self, MainWindow, step, ref, gain):
         self.step = step
         self.ref = ref
+        self.gain = gain
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
         MainWindow.resize(1000, 600)
         self.centralWidget = QtGui.QWidget(MainWindow)
@@ -210,17 +211,20 @@ class Interface(object):
         self.gainSlider = QtGui.QSlider(self.settingsBox)
         self.gainSlider.setMaximum(49)
         self.gainSlider.setSingleStep(1)
-        self.gainSlider.setProperty("value", 20)
+        self.gainSlider.setProperty("value", self.gain)
         self.gainSlider.setOrientation(QtCore.Qt.Horizontal)
         self.gainSlider.setObjectName(_fromUtf8("gainSlider"))
         self.gainLayout.setWidget(0, QtGui.QFormLayout.FieldRole,
                                   self.gainSlider)
         self.settingsVLayout_1.addLayout(self.gainLayout)
+        self.gainSlider.setEnabled(False)
 
         # Gain display
         self.gainDisp = QtGui.QLCDNumber(self.settingsBox)
         self.gainDisp.setSegmentStyle(QtGui.QLCDNumber.Flat)
+        self.gainDisp.setProperty("value", self.gain)
         self.settingsVLayout_1.addWidget(self.gainDisp)
+        self.gainSlider.sliderMoved.connect(self.gainDisp.display)
 
         # Reference level setting
         self.refLayout = QtGui.QFormLayout()

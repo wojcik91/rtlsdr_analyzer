@@ -29,8 +29,7 @@ class Analyzer(QtGui.QMainWindow):
         # VARIABLES #
         self.step = 1.8e6
         self.ref = 0
-
-        self.gain = 0
+        self.gain = 10
         self.sampRate = 2.4e6
 
         self.waterfallHistorySize = 100
@@ -44,7 +43,7 @@ class Analyzer(QtGui.QMainWindow):
         self.penColors = ['g', 'c', 'm']
 
         self.ui = Interface()
-        self.ui.setupUi(self, self.step, self.ref)
+        self.ui.setupUi(self, self.step, self.ref, self.gain)
 
         self.nwelch = 15
         self.nfft = self.ui.rbwEdit.itemData(self.ui.rbwEdit.currentIndex())
@@ -53,8 +52,10 @@ class Analyzer(QtGui.QMainWindow):
         self.sliceLength = int(np.floor(self.length*(self.step/self.sampRate)))
 
         self.createPlot()
+        self.connectSignals()
 
-        # SIGNALS AND SLOTS #
+    # SETUP FUNCTIONS #
+    def connectSignals(self):
         self.ui.startButton.clicked.connect(self.onStart)
         self.ui.stopButton.clicked.connect(self.onStop)
         self.ui.plotTabs.currentChanged.connect(self.onMode)
@@ -76,6 +77,7 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.traceButton_2.clicked.connect(self.onSave_2)
         self.ui.traceButton_3.clicked.connect(self.onSave_3)
         self.ui.waterfallCheck.stateChanged.connect(self.onWaterfall)
+        self.ui.gainSlider.sliderMoved.connect(self.onGain)
 
 # PLOT FUNCTIONS #
 
@@ -358,6 +360,7 @@ class Analyzer(QtGui.QMainWindow):
     def onStart(self):
         self.ui.startButton.setEnabled(False)
         self.ui.stopButton.setEnabled(True)
+        self.ui.gainSlider.setEnabled(True)
         self.ui.statusbar.setVisible(False)
         self.ui.statusbar.clearMessage()
         self.ui.settingsTabs.setEnabled(True)
@@ -372,6 +375,7 @@ class Analyzer(QtGui.QMainWindow):
         self.ui.startButton.setEnabled(True)
         self.ui.stopButton.setEnabled(False)
         self.ui.settingsTabs.setEnabled(False)
+        self.ui.gainSlider.setEnabled(False)
 
         self.samplerThread.exit(0)
         self.sampler.WORKING = False
@@ -428,7 +432,7 @@ class Analyzer(QtGui.QMainWindow):
 
     @pyqtSlot(int)
     def onRbw(self, index):
-        self.nfft = self.ui.rbwEdit.itemData(index).toInt()[0]
+        self.nfft = self.ui.rbwEdit.itemData(index)
         self.updateRbw()
         if self.RUNNING:
             self.sampler.numSamples = self.numSamples
@@ -607,6 +611,10 @@ class Analyzer(QtGui.QMainWindow):
             self.createWaterfall()
         elif state == 0:
             self.deleteWaterfall()
+
+    @pyqtSlot(int)
+    def onGain(self, gain):
+        self.sampler.gain = gain
 
 
 # Start Qt event loop unless running in interactive mode or using pyside.
